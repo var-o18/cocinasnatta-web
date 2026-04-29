@@ -51,6 +51,41 @@ body {
   background-color: rgba(var(--background), 0.8);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes page-fade {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-page {
+  animation: page-fade 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Barra de carga superior minimalista */
+.nav-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: #C99A6B;
+  z-index: 9999;
+  animation: nav-load 0.8s ease-out;
+}
+
+@keyframes nav-load {
+  0% { width: 0; }
+  100% { width: 100%; opacity: 0; }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

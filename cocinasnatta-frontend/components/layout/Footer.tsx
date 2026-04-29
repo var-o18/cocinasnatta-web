@@ -1,6 +1,7 @@
 import React from "react";
-import Testimonials from "./Testimonials";
 import { MapPin } from "lucide-react";
+import MapEmbed from "./MapEmbed";
+import GoogleReviews from "./GoogleReviews";
 
 interface FooterProps {
   isFloating?: boolean;
@@ -73,8 +74,11 @@ const Footer = ({ isFloating = true }: FooterProps) => {
             </div>
           </div>
 
-          {/* TESTIMONIOS */}
-          <Testimonials />
+          {/* Mapa/Reseñas */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+            <MapEmbed />
+            <GoogleReviews/>
+          </div>
         </div>
       </div>
     </footer>

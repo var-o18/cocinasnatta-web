@@ -27,32 +27,31 @@ const reviews = [
 
 const GoogleReviews = () => {
   return (
-    <div className="flex flex-col gap-4 h-full overflow-y-auto pr-2 custom-scrollbar">
-      {reviews.map((review, index) => (
-        <div 
-          key={index} 
-          className="bg-[#C4C4C4]/60 border border-black/40 p-6 text-black"
-        >
-          <div className="flex justify-between items-start mb-1">
-            <h4 className="text-[17px] font-medium font-monserrat">{review.author}</h4>
-            <div className="flex text-yellow-500">
-              {[...Array(review.rating)].map((_, i) => (
-                <Star key={i} size={16} fill="currentColor" />
-              ))}
-            </div>
-          </div>
-          
-          <div className="flex flex-col mb-4">
-            <span className="text-[12px] text-zinc-800 underline">Reseña de Google</span>
-            <span className="text-[11px] text-zinc-700 font-bold">{review.rating}/5 Hace 3 meses</span>
-          </div>
-
-          <p className="text-[20px] leading-tight font-medium">
-            {review.text}
+    <div className="flex flex-col gap-6">
+    
+      {reviews.map((item, index) => (
+        <div key={index} className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl hover:bg-white/10 transition-all duration-500">
+    
+          <h4 className="text-white mb-2 font-bold text-xs tracking-widest uppercase">
+            {item.author}
+          </h4>
+    
+          {/* ESTRELLAS */}
+          <div className="flex mb-3">
+            {[...Array(item.rating)].map((_, i) => (
+              <Star key={i} size={16} className="text-yellow-500 fill-yellow-500 mr-1" />
+            ))}
+         </div>
+    
+          {/* TEXTO */}
+          <p className="text-sm text-zinc-100 italic leading-relaxed">
+            "{item.text}"
           </p>
+                
+    
         </div>
-      ))}
-    </div>
+      ))}  
+     </div>
   );
 };
 

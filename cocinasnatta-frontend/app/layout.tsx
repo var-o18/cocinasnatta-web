@@ -1,22 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const montserrat = Montserrat({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-montserrat",
 });
 
 export const metadata: Metadata = {
   title: "Natta Cocinas | Diseño de Cocinas Premium",
-  description: "Diseño y fabricación de cocinas de alta gama en Alicante. Convertimos tus deseos en realidad.",
+  description: "Diseño y fabricación de cocinas de alta gama en Alicante.",
 };
 
 export default function RootLayout({
@@ -25,16 +19,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="es"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col bg-white dark:bg-black">
+    <html lang="es" className={`${montserrat.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-white">
         <Header />
         <main className="flex-grow">
           {children}
         </main>
-        <Footer />
       </body>
     </html>
   );

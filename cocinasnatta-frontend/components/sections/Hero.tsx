@@ -1,11 +1,28 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Hero() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <section className="relative h-[85vh] flex items-center overflow-hidden">
-      {/* Imagen de fondo con efecto de zoom lento */}
-      <div className="absolute inset-0 z-0">
+    <section className="relative h-screen flex items-center overflow-hidden bg-black">
+      {/* Imagen de fondo con efecto de zoom y opacidad al scroll */}
+      <div 
+        className="absolute inset-0 z-0 transition-opacity duration-300"
+        style={{ 
+          opacity: Math.max(0, 1 - scrollY / 800),
+          transform: `scale(${1 + scrollY * 0.0003})`
+        }}
+      >
         <div className="absolute inset-0 bg-black/30 z-10" />
         <Image
           src="/assets/hero_image.png"
@@ -17,7 +34,13 @@ export default function Hero() {
       </div>
 
       {/* Contenido estático sobre la imagen */}
-      <div className="container mx-auto px-4 md:px-12 relative z-20">
+      <div 
+        className="container mx-auto px-4 md:px-12 relative z-20"
+        style={{ 
+          transform: `translateY(${scrollY * 0.4}px)`,
+          opacity: Math.max(0, 1 - scrollY / 500)
+        }}
+      >
         <div className="max-w-2xl">
           <h1 className="text-4xl md:text-6xl font-medium text-white mb-6 leading-tight font-monserrat drop-shadow-md">
             Cocinas para tu hogar <br />

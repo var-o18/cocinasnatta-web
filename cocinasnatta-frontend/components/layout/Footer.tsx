@@ -2,12 +2,16 @@ import React from "react";
 import Testimonials from "./Testimonials";
 import { Search } from "lucide-react";
 
-const Footer = () => {
+interface FooterProps {
+  isFloating?: boolean;
+}
+
+const Footer = ({ isFloating = true }: FooterProps) => {
   return (
-    <footer className="relative z-20 -mt-64 pb-20">
+    <footer className={`relative z-20 pb-20 ${isFloating ? "-mt-64" : "mt-20"}`}>
       <div className="container mx-auto px-4 md:px-12 max-w-6xl">
-        {/* Tarjeta flotante con cristal (Glassmorphism) */}
-        <div className="bg-zinc-900/85 backdrop-blur-xl border border-white/10 p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-2xl">
+        {/* Tarjeta con cristal o fondo sólido */}
+        <div className={`${isFloating ? "bg-zinc-900/85 backdrop-blur-xl" : "bg-zinc-950"} border border-white/10 p-8 md:p-12 shadow-2xl rounded-2xl`}>
           {/* Cabecera: Info y Horario */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 border-b border-white/5 pb-16">
             <div className="space-y-8">
@@ -24,12 +28,12 @@ const Footer = () => {
                 <a href="#" className="w-11 h-11 flex items-center justify-center border border-white/10 rounded-full hover:bg-white hover:text-black transition-all">
                   <Search size={18} />
                 </a>
-                <a href="#" className="w-11 h-11 flex items-center justify-center border border-white/10 rounded-full hover:bg-white hover:text-black transition-all">
+                <a href="#" className="w-11 h-11 flex items-center justify-center border border-white/10 rounded-full hover:bg-white hover:text-black transition-all text-white">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
                   </svg>
                 </a>
-                <a href="#" className="w-11 h-11 flex items-center justify-center border border-white/10 rounded-full hover:bg-white hover:text-black transition-all">
+                <a href="#" className="w-11 h-11 flex items-center justify-center border border-white/10 rounded-full hover:bg-white hover:text-black transition-all text-white">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -48,14 +52,8 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Sección de Reseñas "Chulas" */}
-          <div className="space-y-8">
-             <div className="flex items-center gap-4">
-                <span className="text-[10px] tracking-[0.4em] uppercase text-zinc-500 font-bold whitespace-nowrap">Opiniones Reales</span>
-                <div className="h-px w-full bg-white/5" />
-             </div>
-             <Testimonials />
-          </div>
+          {/* Testimonios */}
+          <Testimonials />
         </div>
 
         <div className="mt-16 text-center">

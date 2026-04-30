@@ -16,11 +16,16 @@ export default function Showroom() {
   const parallaxValue = typeof window !== 'undefined' ? (scrollY * 0.1) : 0;
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
+    <section 
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black z-10 -mt-[1px]"
+      style={{ transform: "translateY(0)" }}
+    >
       
       {/* Fondo con Parallax de alta precisión */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/40 z-10" /> 
+        {/* Degradado superior ultra-denso para cierre perfecto */}
+        <div className="absolute inset-0 z-20 bg-gradient-to-b from-black via-black/80 to-transparent h-48" />
         <div 
           className="absolute inset-0 scale-110"
           style={{ 

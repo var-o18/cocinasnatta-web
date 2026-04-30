@@ -19,11 +19,13 @@ export default function Hero() {
       <div 
         className="absolute inset-0 z-0 transition-opacity duration-300"
         style={{ 
-          opacity: Math.max(0, 1 - scrollY / 800),
+          opacity: Math.max(0, 1 - scrollY / 1200),
           transform: `scale(${1 + scrollY * 0.0003})`
         }}
       >
         <div className="absolute inset-0 bg-black/30 z-10" />
+        {/* Degradado inferior más largo y denso */}
+        <div className="absolute inset-0 z-20 bg-gradient-to-t from-black via-black/40 to-transparent h-full" />
         <Image
           src="/assets/hero_image.png"
           alt="Cocinas Natta Design"

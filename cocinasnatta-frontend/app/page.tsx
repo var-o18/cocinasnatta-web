@@ -1,4 +1,4 @@
-import Hero from "@/components/sections/Hero";
+import HeroHome from "@/components/sections/HeroHome";
 import Showroom from "@/components/sections/Showroom";
 import Footer from "@/components/layout/Footer";
 import WhyNatta from "@/components/sections/WhyNatta";
@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main className="bg-black">
       {/* Hero: Ahora vuelve a ser una sección normal pero con scroll fluido */}
-      <Hero />
+      <HeroHome />
       
       {/* Showroom: Se conecta directamente con el Hero */}
       <Showroom />

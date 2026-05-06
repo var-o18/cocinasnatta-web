@@ -17,6 +17,7 @@ export default function Showroom() {
 
   return (
     <section 
+      id="showroom"
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black z-10 -mt-[1px]"
       style={{ transform: "translateY(0)" }}
     >
@@ -48,9 +49,9 @@ export default function Showroom() {
           
           {/* Lado Izquierdo: Texto */}
           <div className="flex-1 space-y-8 text-center lg:text-left">
-            <h2 className="text-4xl md:text-7xl font-bold text-white uppercase tracking-tighter leading-none font-monserrat">
+            <h2 className="text-4xl md:text-7xl font-bold text-white uppercase tracking-tighter leading-none font-monserrat drop-shadow-2xl">
               DISEÑO QUE <br /> 
-              <span className="text-zinc-400">EMOCIONA</span>
+              <span className="text-[#C99A6B]">EMOCIONA</span>
             </h2>
             <p className="text-lg md:text-xl text-white/80 font-light max-w-xl leading-relaxed mx-auto lg:mx-0">
               Creamos espacios únicos donde la funcionalidad se encuentra con la belleza. Tu cocina soñada, diseñada por expertos.
@@ -78,7 +79,7 @@ export default function Showroom() {
             </div>
 
             <div className="absolute -bottom-6 -right-4 z-30 w-[200px] md:w-[260px] bg-zinc-950 border border-white/10 p-8 rounded-2xl shadow-2xl">
-               <span className="text-zinc-500 text-[10px] uppercase tracking-[0.4em] block mb-2 font-bold">Concepto</span>
+               <span className="text-[#C99A6B] text-[10px] uppercase tracking-[0.4em] block mb-2 font-bold">Concepto</span>
                <h4 className="text-white text-base md:text-lg font-medium leading-tight">Innovación en cada milímetro</h4>
             </div>
           </div>

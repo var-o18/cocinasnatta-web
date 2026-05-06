@@ -8,7 +8,7 @@ export default function ConfiguraTuCocina() {
     const router = useRouter();
 
     return (
-        <section className="relative h-screen flex items-center">
+        <section className="relative min-h-screen flex items-center py-16">
             <Image src="/assets/configuraCocina.jpg" alt="Diseña tu cocina" fill className="object-cover" priority />
             <div className="absolute inset-0 bg-black/60 z-10" />
             <div className="relative z-20 container mx-auto px-6 md:px-12">

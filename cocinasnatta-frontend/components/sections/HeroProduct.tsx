@@ -40,9 +40,9 @@ export default function HeroProduct() {
             Diseños modernos, funcionales y pensados para tu día a día.
           </p>
 
-          <button className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-all duration-300">
+          <a href="#tipos-cocina" className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-all duration-300 inline-block">
             Ver diseños
-          </button>
+          </a>
         </div>
       </div>
     </section>

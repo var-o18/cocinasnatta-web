@@ -12,7 +12,7 @@ const Footer = ({ isFloating = true }: FooterProps) => {
     <footer className={`relative z-20 pb-20 mt-10`}>
       <div className="container mx-auto px-4 md:px-12 max-w-6xl">
 
-        <div className={`${isFloating ? "bg-gradient-to-br from-zinc-900/80 to-zinc-800/60 backdrop-blur-xl": "bg-zinc-950"} border border-white/10 p-8 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.6)] rounded-3xl relative overflow-hidden`}>
+        <div className={`${isFloating ? "bg-gradient-to-br from-zinc-900/80 to-zinc-800/60 backdrop-blur-xl" : "bg-zinc-950"} border border-white/10 p-8 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.6)] rounded-3xl relative overflow-hidden`}>
           <div className="absolute -top-20 -left-20 w-60 h-60 bg-white/5 rounded-full blur-3xl" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 border-b border-white/5 pb-16 relative z-10">
             <div className="space-y-8">
@@ -37,7 +37,7 @@ const Footer = ({ isFloating = true }: FooterProps) => {
               {/* ICONOS */}
               <div className="flex gap-4">
 
-                <a href="https://www.google.com/maps/place/Natta+Cocinas/@38.1042766,-0.8586575,18z/data=!4m15!1m8!3m7!1s0xd63a307d1260af3:0x20d1dbe891ded474!2sC.+Casas+Nuevas,+03369+El+Bad%C3%A9n,+Alicante!3b1!8m2!3d38.1047261!4d-0.8580475!16s%2Fg%2F11bw4l0ywz!3m5!1s0xd63a382c075dbbb:0x474a2bb7090ef491!8m2!3d38.1042343!4d-0.8588461!16s%2Fg%2F11hhpm5smx?entry=ttu&g_ep=EgoyMDI2MDQyNy4wIKXMDSoASAFQAw%3D%3D" 
+                <a href="https://www.google.com/maps/place/Natta+Cocinas/@38.1042766,-0.8586575,18z/data=!4m15!1m8!3m7!1s0xd63a307d1260af3:0x20d1dbe891ded474!2sC.+Casas+Nuevas,+03369+El+Bad%C3%A9n,+Alicante!3b1!8m2!3d38.1047261!4d-0.8580475!16s%2Fg%2F11bw4l0ywz!3m5!1s0xd63a382c075dbbb:0x474a2bb7090ef491!8m2!3d38.1042343!4d-0.8588461!16s%2Fg%2F11hhpm5smx?entry=ttu&g_ep=EgoyMDI2MDQyNy4wIKXMDSoASAFQAw%3D%3D"
                   className="w-11 h-11 flex items-center justify-center border border-white/10 rounded-full text-white bg-white/5 hover:bg-white hover:text-black hover:scale-110 transition-all duration-300">
                   <MapPin size={18} />
                 </a>
@@ -48,7 +48,7 @@ const Footer = ({ isFloating = true }: FooterProps) => {
                   </svg>
                 </a>
 
-                <a href="#" className="w-11 h-11 flex items-center justify-center border border-white/10 rounded-full text-white bg-white/5 hover:bg-white hover:text-black hover:scale-110 transition-all duration-300">
+                <a href="https://www.instagram.com/cocinasnatta/" className="w-11 h-11 flex items-center justify-center border border-white/10 rounded-full text-white bg-white/5 hover:bg-white hover:text-black hover:scale-110 transition-all duration-300">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="2" y="2" width="20" height="20" rx="5" />
                     <circle cx="12" cy="12" r="3" />
@@ -77,7 +77,7 @@ const Footer = ({ isFloating = true }: FooterProps) => {
           {/* Mapa/Reseñas */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
             <MapEmbed />
-            <GoogleReviews/>
+            <GoogleReviews />
           </div>
         </div>
       </div>

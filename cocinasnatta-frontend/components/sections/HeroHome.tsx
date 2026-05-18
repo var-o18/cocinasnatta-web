@@ -45,9 +45,9 @@ export default function HeroHome() {
         <div className="max-w-5xl mx-auto flex flex-col items-center">
           {/* Large Logo */}
           <div className="mb-12 animate-page">
-            <img 
-              src="/assets/cocinasnattalogo.png" 
-              alt="Natta Cocinas Logo" 
+            <img
+              src="/assets/cocinasnattalogo.png"
+              alt="Natta Cocinas Logo"
               className="h-[80px] md:h-[120px] object-contain brightness-0 invert opacity-90"
             />
           </div>
@@ -68,7 +68,7 @@ export default function HeroHome() {
             >
               <span className="relative z-10">Ver catálogo</span>
             </Link>
-            
+
             <Link
               href="/contacto"
               className="text-white border-b border-white/20 pb-1 hover:border-white transition-all duration-300 text-[13px] tracking-widest uppercase font-medium"
@@ -80,12 +80,12 @@ export default function HeroHome() {
       </div>
 
       {/* Scroll Indicator - Bouncing Arrow */}
-      <a 
-        href="#showroom" 
+      <a
+        href="#showroom"
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 animate-bounce cursor-pointer hover:scale-110 transition-transform"
       >
         <ChevronDown className="text-white opacity-50" size={32} strokeWidth={1} />
       </a>
     </section>
   );
-}
+}

@@ -63,7 +63,7 @@ export default function ContactForm() {
       </div>
 
       <div className="relative z-20 w-full max-w-6xl flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-        
+
         {/* Lado Izquierdo: Texto Editorial y Contacto Directo */}
         <div className="lg:w-1/2 space-y-10 text-white">
           <div className="space-y-4">
@@ -89,7 +89,7 @@ export default function ContactForm() {
           </div>
 
           <div className="flex gap-6 pt-4">
-            <a href="https://www.instagram.com/nattacocinas/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500">
+            <a href="https://www.instagram.com/cocinasnatta/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -115,7 +115,7 @@ export default function ContactForm() {
                   Gracias por confiar en nosotros. <br />
                   Nos pondremos en contacto contigo lo antes posible.
                 </p>
-                <button 
+                <button
                   onClick={() => setStatus("idle")}
                   className="text-white/50 hover:text-white text-xs uppercase tracking-widest transition-colors pt-4"
                 >
@@ -127,8 +127,8 @@ export default function ContactForm() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest text-white ml-1 font-bold">Nombre</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       name="nombre"
                       placeholder="Tu nombre"
                       value={formData.nombre || ""}
@@ -139,8 +139,8 @@ export default function ContactForm() {
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest text-white ml-1 font-bold">Email</label>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
                       name="correo"
                       placeholder="email@ejemplo.com"
                       value={formData.correo || ""}
@@ -150,10 +150,10 @@ export default function ContactForm() {
                     />
                   </div>
                 </div>
-                
+
                 <div className="space-y-2">
                   <label className="text-[10px] uppercase tracking-widest text-white ml-1 font-bold">Mensaje</label>
-                  <textarea 
+                  <textarea
                     name="mensaje"
                     placeholder="Cuéntanos un poco sobre lo que buscas..."
                     value={formData.mensaje || ""}
@@ -170,7 +170,7 @@ export default function ContactForm() {
                   </p>
                 )}
 
-                <button 
+                <button
                   type="submit"
                   disabled={status === "loading"}
                   className="w-full bg-white text-black font-bold uppercase tracking-[0.2em] py-5 rounded-xl hover:bg-zinc-200 transition-all duration-500 flex items-center justify-center gap-3 group disabled:opacity-50 disabled:cursor-not-allowed"

@@ -11,6 +11,8 @@ export default function ContactForm() {
     mensaje: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successNote, setSuccessNote] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -20,9 +22,10 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+    setErrorMessage("");
 
     try {
-      const response = await fetch("http://localhost:8000/api/contacts", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -31,20 +34,29 @@ export default function ContactForm() {
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
+      const data = await response.json().catch(() => ({}));
+
+      if (response.ok && data.saved) {
         setStatus("success");
+        setSuccessNote(
+          data.confirmationSent
+            ? "Hemos enviado un correo de confirmación a tu bandeja de entrada."
+            : "Tu mensaje está registrado. Si no recibes el correo de confirmación, revisa la carpeta de spam."
+        );
         setFormData({ nombre: "", correo: "", mensaje: "" });
-      } else {
-        throw new Error("Error al enviar el mensaje");
+        return;
       }
+
+      setErrorMessage(
+        data.error ?? "No se pudo enviar el mensaje. Inténtalo de nuevo."
+      );
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 6000);
     } catch (error) {
       console.error(error);
+      setErrorMessage("Error de conexión. Comprueba que el servidor esté activo.");
       setStatus("error");
-      setTimeout(() => setStatus("idle"), 5000);
-    } finally {
-      if (status !== "success") {
-        // We keep success status to show the message
-      }
+      setTimeout(() => setStatus("idle"), 6000);
     }
   };
 
@@ -113,7 +125,7 @@ export default function ContactForm() {
                 <h3 className="text-3xl font-bold uppercase tracking-tighter text-white">¡Mensaje Enviado!</h3>
                 <p className="text-zinc-400 font-light text-lg">
                   Gracias por confiar en nosotros. <br />
-                  Nos pondremos en contacto contigo lo antes posible.
+                  {successNote || "Nos pondremos en contacto contigo lo antes posible."}
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
@@ -123,7 +135,7 @@ export default function ContactForm() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form method="post" onSubmit={handleSubmit} className="space-y-6" noValidate>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest text-white ml-1 font-bold">Nombre</label>
@@ -166,7 +178,7 @@ export default function ContactForm() {
 
                 {status === "error" && (
                   <p className="text-red-400 text-xs ml-1 animate-pulse">
-                    Error al enviar el mensaje. Inténtalo de nuevo.
+                    {errorMessage || "Error al enviar el mensaje. Inténtalo de nuevo."}
                   </p>
                 )}
 

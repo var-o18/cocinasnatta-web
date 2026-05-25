@@ -3,8 +3,7 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight, Star, ExternalLink } from "lucide-react";
 
-const GOOGLE_REVIEWS_URL =
-  "https://www.google.com/maps/place/Natta+Cocinas/@38.1042343,-0.8588461,17z/data=!4m8!3m7!1s0xd63a382c075dbbb:0x474a2bb7090ef491!8m2!3d38.1042343!4d-0.8588461!9m1!1b1";
+const GOOGLE_REVIEWS_URL = "https://www.google.com/maps/place/Natta+Cocinas/@38.1043547,-0.8592512,18z/data=!4m6!3m5!1s0xd63a382c075dbbb:0x474a2bb7090ef491!8m2!3d38.1042343!4d-0.8588461!16s%2Fg%2F11hhpm5smx?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D";
 
 const reviews = [
   {
@@ -108,11 +107,10 @@ export default function GoogleReviews() {
                 type="button"
                 aria-label={`Ver reseña ${i + 1}`}
                 onClick={() => setIndex(i)}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === index
-                    ? "w-6 bg-[#c99a6b]"
-                    : "w-1.5 bg-white/20 hover:bg-white/40"
-                }`}
+                className={`h-1.5 rounded-full transition-all ${i === index
+                  ? "w-6 bg-[#c99a6b]"
+                  : "w-1.5 bg-white/20 hover:bg-white/40"
+                  }`}
               />
             ))}
           </div>
@@ -122,7 +120,7 @@ export default function GoogleReviews() {
               type="button"
               onClick={prev}
               aria-label="Reseña anterior"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white transition hover:bg-white hover:text-black"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white transition hover:bg-white hover:text-black cursor-pointer"
             >
               <ChevronLeft size={18} />
             </button>
@@ -130,7 +128,7 @@ export default function GoogleReviews() {
               type="button"
               onClick={next}
               aria-label="Siguiente reseña"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white transition hover:bg-white hover:text-black"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white transition hover:bg-white hover:text-black cursor-pointer"
             >
               <ChevronRight size={18} />
             </button>

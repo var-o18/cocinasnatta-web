@@ -15,4 +15,8 @@ class Proveedor extends Model
         'telefono',
         'direccion',
     ];
+
+    public function eventos(){
+        return $this->belongsToMany(Evento::class, 'evento_proveedor');
+    }
 }

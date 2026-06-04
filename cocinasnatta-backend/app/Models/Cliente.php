@@ -12,4 +12,9 @@ class Cliente extends Model
         'telefono',
         'direccion',
     ];
+
+    public function pedidos()
+    {
+        return $this->hasMany(Pedido::class);
+    }
 }

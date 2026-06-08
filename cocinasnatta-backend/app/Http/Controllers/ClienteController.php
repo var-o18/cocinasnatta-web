@@ -19,7 +19,7 @@ class ClienteController extends Controller
             'nombre' => 'required|string|max:255',
             'correo' => 'required|email|max:255',
             'telefono' => 'required|string|max:255',
-            'direccion' => 'required|string|max:255',
+            'direccion' => 'nullable|string|max:255',
         ]);
 
         $cliente = Cliente::create($validated);
@@ -43,7 +43,7 @@ class ClienteController extends Controller
             'nombre' => 'required|string|max:255',
             'correo' => 'required|email|max:255',
             'telefono' => 'required|string|max:255',
-            'direccion' => 'required|string|max:255',
+            'direccion' => 'nullable|string|max:255',
         ]);
 
         $cliente->update($validated);

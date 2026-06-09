@@ -249,39 +249,26 @@
             Elementos incluidos
         </div>
 
-        <table> <!-- TODO : esto debería ser dinámico -->
-
+        <table>
             <thead>
                 <tr>
                     <th>Elemento</th>
                     <th>Cantidad</th>
                 </tr>
-            </thead>
+            </thead>    
 
             <tbody>
-
-                <tr>
-                    <td>Mueble bajo cocina</td>
-                    <td>3</td>
-                </tr>
-
-                <tr>
-                    <td>Mueble alto</td>
-                    <td>2</td>
-                </tr>
-
-                <tr>
-                    <td>Encimera porcelánica</td>
-                    <td>1</td>
-                </tr>
-
-                <tr>
-                    <td>Electrodomésticos integrados</td>
-                    <td>4</td>
-                </tr>
-
+                @forelse(($elementos ?? []) as $item)
+                    <tr>
+                        <td>{{ $item['nombre'] }}</td>
+                        <td>{{ $item['cantidad'] }}</td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="2">No hay elementos seleccionados</td>
+                    </tr>
+                @endforelse
             </tbody>
-
         </table>
 
         <!-- TODO: Aqui debe de ir la imagen del diseño -->

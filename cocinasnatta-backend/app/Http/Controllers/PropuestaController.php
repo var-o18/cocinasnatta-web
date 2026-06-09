@@ -24,11 +24,20 @@ class PropuestaController extends Controller
             'email' => 'required|email|max:100',
             'telefono' => 'required|string|max:20',
             'descripcion' => 'required|string|max:2000',
+            'elementos' => 'nullable|array',
+            'elementos.*.nombre' => 'required_with:elementos|string',
+            'elementos.*.cantidad' => 'required_with:elementos|integer',
         ]);
 
         try {
             // 1. Generar PDF
-            $pdf = Pdf::loadView('pdf.propuesta', $validated);
+            $pdf = Pdf::loadView('pdf.propuesta', [
+                'nombre' => $validated['nombre'],
+                'email' => $validated['email'],
+                'telefono' => $validated['telefono'],
+                'descripcion' => $validated['descripcion'],
+                'elementos' => $validated['elementos'] ?? [],
+        ]);
             $pdfBinary = $pdf->output();
 
             // 2.Guardar propuesta

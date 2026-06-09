@@ -13,6 +13,10 @@ export default function PideTuDiseno() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    const handleStartDesign = () => {
+        window.location.href = process.env.NEXT_PUBLIC_3D_URL!;
+    };
+
     return (
         <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
             <div className="absolute inset-0 z-0 transition-transform duration-300 ease-out"
@@ -52,16 +56,19 @@ export default function PideTuDiseno() {
                     </p>
 
                     <div className="flex flex-col md:flex-row items-center justify-center gap-6 animate-page" style={{ animationDelay: '0.6s' }}>
-                        <a
-                            href="#tipos-cocina"
-                            className="group relative px-10 py-4 bg-[#C99A6B] text-white text-xs tracking-[0.3em] uppercase font-bold transition-all duration-500 hover:bg-[#b38555] overflow-hidden flex items-center gap-3 shadow-xl shadow-[#C99A6B]/20 rounded-full"
-                        >
+
+                        <button
+                            onClick={handleStartDesign}
+                            className="group relative px-10 py-4 bg-[#C99A6B] text-white text-xs tracking-[0.3em] uppercase font-bold transition-all duration-500 hover:bg-[#b38555] overflow-hidden flex items-center gap-3 shadow-xl shadow-[#C99A6B]/20 rounded-full cursor-pointer"
+                            >
                             <span className="relative z-10 flex items-center gap-2">
                                 Comenzar nuevo diseño
                                 <ArrowRight className="transition-transform group-hover:translate-x-1" size={16} />
                             </span>
+
                             <div className="absolute inset-0 bg-white/10 -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-                        </a>
+                        </button>
+
                     </div>
                 </div>
             </div>

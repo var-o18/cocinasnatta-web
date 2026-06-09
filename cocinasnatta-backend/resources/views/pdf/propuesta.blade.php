@@ -271,7 +271,15 @@
             </tbody>
         </table>
 
-        <!-- TODO: Aqui debe de ir la imagen del diseño -->
+        @if(!empty($imagenDiseno))
+            <div class="section-title">
+                Vista previa del diseño
+            </div>
+
+            <div style="text-align:center; margin-top:15px; margin-bottom:25px;">
+                <img src="{{ $imagenDiseno }}" style="max-width:100%; max-height:400px;">
+            </div>
+        @endif
 
         <div class="summary-box">
             <div class="summary-title">

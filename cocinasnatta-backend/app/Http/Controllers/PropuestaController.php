@@ -27,7 +27,33 @@ class PropuestaController extends Controller
             'elementos' => 'nullable|array',
             'elementos.*.nombre' => 'required_with:elementos|string',
             'elementos.*.cantidad' => 'required_with:elementos|integer',
+            'imagen_diseno' => 'nullable|string',
         ]);
+        
+
+        $rutaImagen = null;
+
+        if (!empty($validated['imagen_diseno'])) {
+
+            $imageData = preg_replace(
+                '#^data:image/\w+;base64,#i',
+                '',
+                $validated['imagen_diseno']
+            );
+
+            $imageData = base64_decode($imageData);
+
+            $nombreImagen = 'disenos/' . uniqid() . '.png';
+
+            Storage::disk('public')->put(
+                $nombreImagen,
+                $imageData
+            );
+
+            $rutaImagen = storage_path(
+                'app/public/' . $nombreImagen
+            );
+        }
 
         try {
             // 1. Generar PDF
@@ -37,6 +63,7 @@ class PropuestaController extends Controller
                 'telefono' => $validated['telefono'],
                 'descripcion' => $validated['descripcion'],
                 'elementos' => $validated['elementos'] ?? [],
+                'imagenDiseno' => $rutaImagen
         ]);
             $pdfBinary = $pdf->output();
 

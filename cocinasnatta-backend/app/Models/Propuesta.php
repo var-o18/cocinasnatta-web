@@ -14,4 +14,7 @@ class Propuesta extends Model
         'archivo_pdf',
         'estado'
     ];
+        protected $hidden = [
+        'archivo_pdf'
+    ];
 }

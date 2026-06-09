@@ -29,3 +29,5 @@ Route::apiResource('pedidos', PedidoController::class);
 Route::apiResource('propuestas', PropuestaController::class);
 
 Route::get('propuestas/{id}/pdf', [PropuestaController::class, 'downloadPdf']);
+
+Route::post('/propuestas/pdf', [PropuestaController::class, 'generarPdf']);

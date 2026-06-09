@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Propuesta;
 use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PropuestaController extends Controller
 {
@@ -16,7 +17,6 @@ class PropuestaController extends Controller
         return response()->json($propuestas);
     }
 
-
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -24,13 +24,31 @@ class PropuestaController extends Controller
             'email' => 'required|email|max:100',
             'telefono' => 'required|string|max:20',
             'descripcion' => 'required|string|max:2000',
-            'archivo_pdf' => 'required|string',
-
         ]);
 
-        $propuesta = Propuesta::create($validated);
-        $propuesta->makeHidden('archivo_pdf');
-        return response()->json($propuesta, 201);
+        try {
+            // 1. Generar PDF
+            $pdf = Pdf::loadView('pdf.propuesta', $validated);
+            $pdfBinary = $pdf->output();
+
+            // 2.Guardar propuesta
+            $propuesta = Propuesta::create([
+                'nombre' => $validated['nombre'],
+                'email' => $validated['email'],
+                'telefono' => $validated['telefono'],
+                'descripcion' => $validated['descripcion'],
+                'archivo_pdf' => $pdfBinary,
+                'estado' => 'pendiente',
+            ]);
+
+            return response()->json($propuesta, 201);
+
+        } catch (\Throwable $e) {
+            return response()->json([
+                'message' => 'Error generando o guardando PDF',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     public function show($id)

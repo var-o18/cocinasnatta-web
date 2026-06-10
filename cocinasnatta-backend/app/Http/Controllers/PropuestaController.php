@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Propuesta;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Mail;
 
 class PropuestaController extends Controller
 {
@@ -76,6 +77,18 @@ class PropuestaController extends Controller
                 'archivo_pdf' => $pdfBinary,
                 'estado' => 'pendiente',
             ]);
+
+            Mail::send('emails.propuesta', [
+                'nombre' => $validated['nombre'],
+                'descripcion' => $validated['descripcion'],
+            ], function ($message) use ($validated, $pdfBinary) {
+
+                $message->to($validated['email'])
+                    ->subject('Tu propuesta personalizada - Natta Cocinas')
+                    ->attachData($pdfBinary, 'propuesta.pdf', [
+                        'mime' => 'application/pdf'
+                    ]);
+            });
 
             return response()->json($propuesta, 201);
 

@@ -16,6 +16,10 @@ class CustomTokenAuth
             'login',
             'api/contacts',
             'contacts',
+            'api/forgot-password',
+            'forgot-password',
+            'api/reset-password',
+            'reset-password',
         ];
 
         foreach ($publicPaths as $path) {
